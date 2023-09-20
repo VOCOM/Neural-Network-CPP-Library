@@ -2,7 +2,7 @@
 Artificial Intelligence model
 Language: C++\
 Build system: CMake\
-Supported Operating Systems: Windows, Linux\
+Supported Operating Systems: Windows, Linux
 
 How to use:
 1. Clone the repository
