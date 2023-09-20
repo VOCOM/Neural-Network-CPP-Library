@@ -1,5 +1,5 @@
 # RSE4207
-Artificial Intelligence model
+Artificial Intelligence model\
 Language: `C++`\
 Build system: `CMake`\
 Supported Operating Systems: `Windows, Linux`
