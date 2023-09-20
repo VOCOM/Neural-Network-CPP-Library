@@ -19,6 +19,6 @@ msbuild.exe RSE4207_AI_MODEL.sln
 For Bash:
 ```
 make
-./RSE4207_AI_MODEL
+./bin/RSE4207_AI_MODEL
 
 ```
