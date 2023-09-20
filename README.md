@@ -20,4 +20,5 @@ For Bash:
 ```
 make
 ./RSE4207_AI_MODEL
+
 ```
