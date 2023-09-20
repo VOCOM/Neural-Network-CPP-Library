@@ -1,6 +1,6 @@
 # RSE4207
 Artificial Intelligence model
-Language: C++\
+Language: `C++`\
 Build system: CMake\
 Supported Operating Systems: Windows, Linux
 
