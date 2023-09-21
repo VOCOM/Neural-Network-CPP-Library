@@ -27,5 +27,5 @@ make
 
 Dependencies:
 `CMake`\
-Windows: [CMake](https://github.com/Kitware/CMake/releases/download/v3.27.6/cmake-3.27.6-windows-x86_64.msi) [.NET Framework](https://dotnet.microsoft.com/en-us/download)
+Windows: [CMake](https://github.com/Kitware/CMake/releases/download/v3.27.6/cmake-3.27.6-windows-x86_64.msi), [.NET Framework](https://dotnet.microsoft.com/en-us/download)\
 Bash: `sudo apt install cmake`
