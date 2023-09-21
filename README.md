@@ -26,5 +26,6 @@ make
 ```
 
 Dependencies:\
-[CMake](https://cmake.org/download/)\
-Windows: [.NET Framework](https://dotnet.microsoft.com/en-us/download)\
+[CMake](https://cmake.org/download/)
+
+Windows: [.NET Framework](https://dotnet.microsoft.com/en-us/download)
