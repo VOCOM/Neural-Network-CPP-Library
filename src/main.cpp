@@ -10,31 +10,23 @@
  */
 
 #include "../inc/node.hpp"
+#include "../inc/tests.hpp"
 
 #include <iostream>
 
-#define x 5
-#define y 10
-
 int main(int argc, char** argv)
 {
-    std::cout << "Hello World!\n";
+    std::cout << "RSE4207 Artificial Intelligence & Machine Learning Model\n\n";
 
-    double bias{10};
-    std::vector<double> weights{1, 1};
-    std::vector<int> inputs{x, y};
-    std::vector<double> outputs{0};
-    SigmoidActivator<100> triggerFunction;
+    /* TODO: Cleaner Software */
 
-    std::cout << "Sigmoid of " << x << " is " << triggerFunction.Run(x) << "\n";
-    std::cout << "Sigmoid of " << y << " is " << triggerFunction.Run(y) << "\n";
-    std::cout << "Sigmoid of " << x+y+bias << " is " << triggerFunction.Run(x+y+bias) << "\n";
+    /* TODO: Activator Tests */
+    //ActivatorTests();
 
-    Node<int, double> SigmoidNode(inputs, outputs, weights, bias, &triggerFunction);
-    SigmoidNode.Process();
-
-    for(size_t index{}; index < outputs.size(); ++index)
-    {
-        std::cout << "Output " << index << " value " << outputs[index] << "\n";
-    }
+    //Test Node API
+    std::cout << "Running API Tests on Nodes\n\n";
+    NodeTest();
+    
+    /* TODO: Layers API */
+    //LayerTests();
 }

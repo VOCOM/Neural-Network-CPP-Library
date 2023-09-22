@@ -34,14 +34,12 @@ Node(std::vector<InType>& inputVector, std::vector<OutType>& outputVector, std::
     : m_inputs(inputVector), m_outputs(outputVector), m_weights(weightVector), m_bias(bias), m_activationFunction(function)
 {
     if(m_weights.size() != m_inputs.size()) throw MismatchError();
-    std::cout << "Node " << m_nodeID << " created with " << m_inputs.size() << " Inputs & " << m_weights.size() << " Weights\n";
 }
 
 //Methods
 void Process()
 {
     Aggregate();
-    std::cout << "Node weighted aggregate " << m_aggregate << "\n";
     Stimulate();
 }
 

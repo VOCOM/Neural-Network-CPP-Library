@@ -13,7 +13,6 @@
 #define __EXECPTIONS_HPP__
 
 #include <exception>
-#include <iostream>
 
 class MismatchError : public std::exception
 {
