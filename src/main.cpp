@@ -13,16 +13,28 @@
 
 #include <iostream>
 
+#define x 5
+#define y 10
+
 int main(int argc, char** argv)
 {
     std::cout << "Hello World!\n";
 
     double bias{10};
-    std::vector<double> weights{1, 3, 5, 7, 9};
-    std::vector<int> inputs{2, 4, 6, 8};
-    std::vector<int> outputs;
-    double (*triggerFunction)(const int&);
+    std::vector<double> weights{1, 1};
+    std::vector<int> inputs{x, y};
+    std::vector<double> outputs{0};
+    SigmoidActivator<100> triggerFunction;
 
-    Node<int, int> n1(inputs, outputs, weights, bias, triggerFunction);
+    std::cout << "Sigmoid of " << x << " is " << triggerFunction.Run(x) << "\n";
+    std::cout << "Sigmoid of " << y << " is " << triggerFunction.Run(y) << "\n";
+    std::cout << "Sigmoid of " << x+y+bias << " is " << triggerFunction.Run(x+y+bias) << "\n";
 
+    Node<int, double> SigmoidNode(inputs, outputs, weights, bias, &triggerFunction);
+    SigmoidNode.Process();
+
+    for(size_t index{}; index < outputs.size(); ++index)
+    {
+        std::cout << "Output " << index << " value " << outputs[index] << "\n";
+    }
 }

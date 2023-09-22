@@ -13,45 +13,67 @@
 #define __NODE_HPP__
 
 #include "execptions.hpp"
+#include "activations.hpp"
 
 #include <vector>
 #include <memory>
-#include <map>
 
+/**
+ * @brief Neural Node template class
+ * 
+ * @tparam InType Input variable type
+ * @tparam OutType Output variable type
+ */
 template <typename InType, typename OutType>
 class Node
 {
 public:
-//Node Pool
-static std::map<size_t, std::unique_ptr<Node>> NodePool;
-
 //Constructors & Destructors
 Node() = delete;
-Node(std::vector<InType>& inputVector, std::vector<OutType>& outputVector, std::vector<double>& weightVector, double bias, double (*activationFunction)(const InType&))
-    : m_inputs(inputVector), m_outputs(outputVector), m_weights(weightVector), m_bias(bias), m_activationFunction(activationFunction)
+Node(std::vector<InType>& inputVector, std::vector<OutType>& outputVector, std::vector<double>& weightVector, double bias, ActivationFunction* function)
+    : m_inputs(inputVector), m_outputs(outputVector), m_weights(weightVector), m_bias(bias), m_activationFunction(function)
 {
     if(m_weights.size() != m_inputs.size()) throw MismatchError();
-    std::cout << "Node created with " << m_inputs.size() << " Inputs & " << m_weights.size() << " Weights\n";
+    std::cout << "Node " << m_nodeID << " created with " << m_inputs.size() << " Inputs & " << m_weights.size() << " Weights\n";
 }
 
 //Methods
 void Process()
 {
-    
+    Aggregate();
+    std::cout << "Node weighted aggregate " << m_aggregate << "\n";
+    Stimulate();
 }
 
 private:
 //Methods
-void Aggregate();
-void ActivationFunction();
+void Aggregate()
+{
+    for(size_t index{}; index < m_inputs.size(); ++index) 
+        m_aggregate += m_weights[index] * m_inputs[index];
+    m_aggregate += m_bias;
+}
+void Stimulate()
+{
+    m_aggregate = m_activationFunction->Run(m_aggregate);
+    for(auto& output : m_outputs)
+    {
+        output = m_aggregate;
+    }
+}
 
 //Variables
-size_t m_nodeID;
+size_t m_nodeID{};
+double m_aggregate{};
+
+//Synapses
 double m_bias{};
 std::vector<InType>& m_inputs;
 std::vector<OutType>& m_outputs;
 std::vector<double>& m_weights;
-double (*m_activationFunction)(const InType&);
+
+//Activation Function
+ActivationFunction* m_activationFunction;
 };
 
 #endif
