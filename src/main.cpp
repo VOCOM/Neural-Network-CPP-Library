@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 
     double bias{10};
     std::vector<double> weights{1, 3, 5, 7, 9};
-    std::vector<int> inputs{2, 4, 6, 8, 0};
+    std::vector<int> inputs{2, 4, 6, 8};
     std::vector<int> outputs;
     double (*triggerFunction)(const int&);
 
