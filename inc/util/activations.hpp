@@ -39,7 +39,7 @@ class SigmoidActivator : public ActivationFunction
 public:
 double Run(const double& input)
 {
-    return (1 / (1 + pow(EULER_NUMBER_L, -input/m_scale)));
+    return (1.0f / (1.0f + pow(EULER_NUMBER_L, -input/m_scale)));
 }
 const char* Name()
 {

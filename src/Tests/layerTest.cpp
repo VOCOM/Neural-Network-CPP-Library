@@ -17,13 +17,12 @@ void LayerTests()
 {
     std::cout << "Running API Tests on Layers\n\n";
     // Inital values
-    std::vector<int> inputs{10};
-    std::vector<std::vector<double>> weights{{1}};
-    std::vector<double> outputs{0};
-    std::vector<double> bias{0};
-    SigmoidActivator<SigmoidScaler> S1;
-    std::vector<ActivationFunction*> activators{};
-    activators.push_back(&S1);
+    std::vector<std::vector<double>>    weights{{1}};
+    std::vector<double>                 inputs{10};
+    std::vector<double>                 outputs{0};
+    std::vector<double>                 bias{0};
+    std::shared_ptr<SigmoidActivator<SigmoidScaler>> Sigmoid = std::make_shared<SigmoidActivator<SigmoidScaler>>();
+    std::shared_ptr<ActivationFunction> Function = Sigmoid;
 
     Header("Input Values");
     {
@@ -48,15 +47,15 @@ void LayerTests()
     Header("Single Sigmoid Activator Baseline");
     {
         double aggregate{inputs[0]*weights[0][0]+bias[0]};
-        std::cout << "Sigmoid of " << aggregate << " with scaler of " << S1.Scaler() << " is " << S1.Run(aggregate) << "\n\n";
+        std::cout << "Sigmoid of " << aggregate << " with scaler of " << Sigmoid->Scaler() << " is " << Sigmoid->Run(aggregate) << "\n\n";
     }
 
     // Single Layer Single Node Test
     Header("Single Layer Single Node Test");
     {
-        Layer<int> SingleLayer(inputs, weights, bias, activators, 1);
+        Layer SingleLayer(inputs, weights, bias, Function, (size_t)1);
         SingleLayer.Process();
-        outputs = SingleLayer.GetOutput();
+        outputs = SingleLayer.OutputVector();
         std::cout << "Output is: " << outputs[0] << "\n\n";
     }
 

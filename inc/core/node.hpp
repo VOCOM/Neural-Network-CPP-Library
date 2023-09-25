@@ -12,40 +12,33 @@
 #ifndef __NODE_HPP__
 #define __NODE_HPP__
 
-#include "execptions.hpp"
-#include "activations.hpp"
+#include "../util/activations.hpp"
+#include "../util/execptions.hpp"
 
 #include <vector>
 #include <memory>
-
-namespace NODE
-{
-    static size_t nodePool{};
-}
 
 /**
  * @brief Neural Node template class
  * 
  * @tparam InType Input variable type
  */
-template <typename InType>
 class Node
 {
 public:
 //Constructors & Destructors
 Node() = delete;
-Node(std::vector<InType>& inputVector, std::vector<double>& outputVector, std::vector<double>& weightVector, double bias, ActivationFunction* function)
+Node(std::vector<double>& inputVector, std::vector<double>& outputVector, std::vector<double>& weightVector, double bias, std::shared_ptr<ActivationFunction> function)
     : m_inputs(inputVector), m_outputs(outputVector), m_weights(weightVector), m_bias(bias), m_activationFunction(function)
 {
-    m_nodeID = NODE::nodePool++;
+    if(m_weights.size() != m_inputs.size()) throw MismatchError();
 #if TEST_MODE
-    std::cout   << "Creating Node " << m_nodeID << " with "
+    std::cout   << "Creating Node with "
                 << m_inputs.size() << " inputs, "
                 << m_weights.size() << " weights, "
                 << m_outputs.size() << " outputs, "
                 << "using " << m_activationFunction->Name() << "\n";
 #endif
-    if(m_weights.size() != m_inputs.size()) throw MismatchError();
 }
 
 //Methods
@@ -78,17 +71,16 @@ void Stimulate()
 }
 
 //Variables
-size_t m_nodeID{};
 double m_aggregate{};
 
 //Synapses
 double m_bias{};
-std::vector<InType>& m_inputs;
+std::vector<double>& m_inputs;
 std::vector<double>& m_outputs;
 std::vector<double>& m_weights;
 
 //Activation Function
-ActivationFunction* m_activationFunction;
+std::shared_ptr<ActivationFunction> m_activationFunction;
 };
 
 #endif

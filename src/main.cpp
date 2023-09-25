@@ -24,7 +24,10 @@ int main(int argc, char** argv)
 
     // Test Node API
     NodeTest();
-    
+
     // Test Layer API
     LayerTests();
+
+    // NeuralNet API
+    NNLayerTests();
 }

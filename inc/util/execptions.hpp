@@ -18,7 +18,12 @@ class MismatchError : public std::exception
 {
 public:
 const char* what() const throw() { return "Number of weights & inputs mismatch!!!\n"; }
+};
 
+class WeightsError : public std::exception
+{
+public:
+const char* what() const throw() { return "Missing number of weights!!!\n"; }
 };
 
 #endif

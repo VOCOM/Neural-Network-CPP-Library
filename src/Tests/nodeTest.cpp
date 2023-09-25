@@ -18,9 +18,9 @@ void NodeTest()
     std::cout << "Running API Tests on Nodes\n\n";
     // Initial Values
     std::vector<double>     weights {1, 1, 1, 1, 1};
-    std::vector<int>        inputs  {1, 2, 3, 4, 5};
+    std::vector<double>     inputs  {1, 2, 3, 4, 5};
     std::vector<double>     outputs {0, 1};
-    SigmoidActivator<SigmoidScaler>   triggerFunction;
+    std::shared_ptr<SigmoidActivator<SigmoidScaler>> triggerFunction = std::make_shared<SigmoidActivator<SigmoidScaler>>();
     Header("Input Values");
     {
         std::cout << "Weights:";
@@ -45,13 +45,13 @@ void NodeTest()
             std::cout << " [" << inputs[index] << "," << weights[index] << "]";
             aggregate += inputs[index] * weights[index];
         }
-        std::cout << " with scaler of " << triggerFunction.Scaler() << " is " << triggerFunction.Run(aggregate+10) << "\n\n";
+        std::cout << " with scaler of " << triggerFunction->Scaler() << " is " << triggerFunction->Run(aggregate+10) << "\n\n";
     }
 
     // Single Node Test
     Header("Single Node Sigmoid Activated Test");
     {
-        Node<int> SigmoidNode(inputs, outputs, weights, 10, &triggerFunction);
+        Node SigmoidNode(inputs, outputs, weights, 10, triggerFunction);
         SigmoidNode.Process();
         for(size_t index{}; index < outputs.size(); ++index)
             std::cout << "Output " << index << " value " << outputs[index] << "\n\n";
@@ -63,7 +63,7 @@ void NodeTest()
 
     Header("Single Node Weight Factoring Test");
     {
-        Node<int> SigmoidNode(inputs, outputs, weights, 10, &triggerFunction);
+        Node SigmoidNode(inputs, outputs, weights, 10, triggerFunction);
         SigmoidNode.Process();
         for(size_t index{}; index < outputs.size(); ++index)
             std::cout << "Output " << index << " value " << outputs[index] << "\n\n";

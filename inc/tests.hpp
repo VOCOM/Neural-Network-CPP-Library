@@ -16,8 +16,9 @@
 #include <iostream>
 #include <iomanip>
 
-#include "node.hpp"
-#include "layers.hpp"
+#include "core/node.hpp"
+#include "core/layers.hpp"
+#include "core/neuralNet.hpp"
 
 #define LineWidth 20
 
@@ -29,5 +30,8 @@ void Footer(char const*);
 void ActivatorTests();
 void NodeTest();
 void LayerTests();
+
+// Neural Net Tests
+void NNLayerTests();
 
 #endif

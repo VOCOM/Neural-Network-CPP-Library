@@ -9,6 +9,7 @@ set(testFiles
     Tests/testFunctions.cpp
     Tests/nodeTest.cpp
     Tests/layerTest.cpp
+    Tests/nnTests.cpp
 )
 
 add_executable(RSE4207_AI_MODEL ${testFiles} main.cpp)
