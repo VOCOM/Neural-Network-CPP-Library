@@ -5,25 +5,9 @@ Build system: `CMake`\
 Supported Operating Systems: `Windows`, `Linux`
 
 How to use:
-1. Clone the repository
-2. Open a terminal in the repository
-3. ```
-   mkdir build && cd build
-   cmake ..
-   
-   ```
-For Command Prompt:
-```
-msbuild.exe RSE4207_AI_MODEL.sln
+1. Download the `inc` folder
 
-```
-
-For Bash:
-```
-make
-./bin/RSE4207_AI_MODEL
-
-```
+Library is header based, no linking required.
 
 Dependencies:\
 [CMake](https://cmake.org/download/)
