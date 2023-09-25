@@ -15,7 +15,8 @@ How to use:
    std::vector<double>                 inputs  {15};
    std::vector<double>                 outputs {1};
    std::vector<double>                 bias    {10};
-   std::shared_ptr<SigmoidActivator<SigmoidScaler>> triggerFunction = std::make_shared<SigmoidActivator<SigmoidScaler>>();
+   std::shared_ptr<SigmoidActivator<SigmoidScaler>> triggerFunction =
+      std::make_shared<SigmoidActivator<SigmoidScaler>>();
 
    // Neural Net
    NeuralNet& neuralNet = NeuralNet::Initialise(inputs, outputs);
