@@ -9,7 +9,6 @@
  * 
  */
 
-#include "../inc/node.hpp"
 #include "../inc/tests.hpp"
 
 #include <iostream>
@@ -24,9 +23,8 @@ int main(int argc, char** argv)
     //ActivatorTests();
 
     //Test Node API
-    std::cout << "Running API Tests on Nodes\n\n";
     NodeTest();
     
     /* TODO: Layers API */
-    //LayerTests();
+    LayerTests();
 }

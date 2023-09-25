@@ -9,15 +9,11 @@
  * 
  */
 
-#include "../inc/node.hpp"
-
-#include <iostream>
-#include <iomanip>
-
-#define LineWidth 20
+#include "../../inc/tests.hpp"
 
 void NodeTest()
 {
+    std::cout << "Running API Tests on Nodes\n\n";
     // Initial Values
     std::vector<double>     weights{1, 1, 1, 1, 1};
     std::vector<int>        inputs{1, 2, 3, 4, 5};
@@ -68,5 +64,12 @@ void NodeTest()
     /* TODO: n-Node Tests */
 
     /* TODO: Activator Switching Tests */
+
+    // END
+    {
+        std::cout << std::right << std::setfill('-') << std::setw(LineWidth) << " ";
+        std::cout << "Node API Test END";
+        std::cout << std::left << std::setfill('-') << std::setw(LineWidth) << " " << "\n\n";
+    }
 
 }

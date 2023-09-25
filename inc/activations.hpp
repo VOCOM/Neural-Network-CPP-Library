@@ -12,6 +12,7 @@
 #ifndef __ACTIVATIONS_HPP__
 #define __ACTIVATIONS_HPP__
 
+#include <string>
 #include <math.h>
 #define EULER_NUMBER_L 2.71828182845904523536
 
@@ -23,6 +24,7 @@ class ActivationFunction
 {
 public:
 virtual double Run(const double&) = 0;
+virtual const char* Name() = 0;
 };
 
 /**
@@ -39,10 +41,14 @@ double Run(const double& input)
 {
     return (1 / (1 + pow(EULER_NUMBER_L, -input/m_scale)));
 }
+const char* Name()
+{
+    return m_name.c_str();
+}
 
 private:
 double m_scale{N};
-
+std::string m_name{"Sigmoid Function"};
 };
 
 #endif

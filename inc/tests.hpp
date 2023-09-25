@@ -11,6 +11,15 @@
 
 #ifndef __TEST_HPP__
 #define __TEST_HPP__
+#define TEST_MODE true
+
+#include <iostream>
+#include <iomanip>
+
+#include "node.hpp"
+#include "layers.hpp"
+
+#define LineWidth 20
 
 void ActivatorTests();
 void NodeTest();
