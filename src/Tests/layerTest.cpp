@@ -54,13 +54,14 @@ void LayerTests()
     // Single Layer Single Node Test
     Header("Single Layer Single Node Test");
     {
-        Layer<int, double> SingleLayer(inputs, outputs, weights, bias, activators, 1);
+        Layer<int> SingleLayer(inputs, weights, bias, activators, 1);
         SingleLayer.Process();
+        outputs = SingleLayer.GetOutput();
         std::cout << "Output is: " << outputs[0] << "\n\n";
     }
-    
+
     /* TODO: Single Layer n-Node Test */
-    
+
     /* TODO: n-Layer n-Node Test */
 
     // END

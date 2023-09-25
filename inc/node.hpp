@@ -18,21 +18,26 @@
 #include <vector>
 #include <memory>
 
+namespace NODE
+{
+    static size_t nodePool{};
+}
+
 /**
  * @brief Neural Node template class
  * 
  * @tparam InType Input variable type
- * @tparam OutType Output variable type
  */
-template <typename InType, typename OutType>
+template <typename InType>
 class Node
 {
 public:
 //Constructors & Destructors
 Node() = delete;
-Node(std::vector<InType>& inputVector, std::vector<OutType>& outputVector, std::vector<double>& weightVector, double bias, ActivationFunction* function)
+Node(std::vector<InType>& inputVector, std::vector<double>& outputVector, std::vector<double>& weightVector, double bias, ActivationFunction* function)
     : m_inputs(inputVector), m_outputs(outputVector), m_weights(weightVector), m_bias(bias), m_activationFunction(function)
 {
+    m_nodeID = NODE::nodePool++;
 #if TEST_MODE
     std::cout   << "Creating Node " << m_nodeID << " with "
                 << m_inputs.size() << " inputs, "
@@ -48,6 +53,11 @@ void Process()
 {
     Aggregate();
     Stimulate();
+}
+void UpdateWeights(double factor)
+{
+    for(auto& weight : m_weights)
+        weight *= factor;
 }
 
 private:
@@ -74,7 +84,7 @@ double m_aggregate{};
 //Synapses
 double m_bias{};
 std::vector<InType>& m_inputs;
-std::vector<OutType>& m_outputs;
+std::vector<double>& m_outputs;
 std::vector<double>& m_weights;
 
 //Activation Function
