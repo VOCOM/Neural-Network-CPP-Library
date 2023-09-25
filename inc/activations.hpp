@@ -45,6 +45,10 @@ const char* Name()
 {
     return m_name.c_str();
 }
+double Scaler()
+{
+    return m_scale;
+}
 
 private:
 double m_scale{N};

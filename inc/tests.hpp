@@ -21,6 +21,11 @@
 
 #define LineWidth 20
 
+// Formatting functions
+void Header(char const*);
+void Footer(char const*);
+
+// Tests
 void ActivatorTests();
 void NodeTest();
 void LayerTests();

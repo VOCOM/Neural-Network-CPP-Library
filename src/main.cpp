@@ -22,9 +22,9 @@ int main(int argc, char** argv)
     /* TODO: Activator Tests */
     //ActivatorTests();
 
-    //Test Node API
+    // Test Node API
     NodeTest();
     
-    /* TODO: Layers API */
+    // Test Layer API
     LayerTests();
 }

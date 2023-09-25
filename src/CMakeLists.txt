@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.16)
 project(src)
 
 # Add test directory to build tree
@@ -5,6 +6,7 @@ add_subdirectory(Tests)
 
 # Include Test source files
 set(testFiles
+    Tests/testFunctions.cpp
     Tests/nodeTest.cpp
     Tests/layerTest.cpp
 )

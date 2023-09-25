@@ -33,14 +33,14 @@ Node() = delete;
 Node(std::vector<InType>& inputVector, std::vector<OutType>& outputVector, std::vector<double>& weightVector, double bias, ActivationFunction* function)
     : m_inputs(inputVector), m_outputs(outputVector), m_weights(weightVector), m_bias(bias), m_activationFunction(function)
 {
-    if(m_weights.size() != m_inputs.size()) throw MismatchError();
 #if TEST_MODE
-    std::cout   << "Created Node " << m_nodeID << " with "
+    std::cout   << "Creating Node " << m_nodeID << " with "
                 << m_inputs.size() << " inputs, "
                 << m_weights.size() << " weights, "
                 << m_outputs.size() << " outputs, "
                 << "using " << m_activationFunction->Name() << "\n";
 #endif
+    if(m_weights.size() != m_inputs.size()) throw MismatchError();
 }
 
 //Methods
