@@ -2,7 +2,7 @@
  * @file layers.hpp
  * @author Muhammad Syamim (Syazam33@gmail.com)
  * @brief 
- * @version 0.1
+ * @version 1.0
  * @date 2023-09-25
  * 
  * @copyright Copyright (c) 2023
@@ -13,8 +13,6 @@
 #define __LAYERS_HPP__
 
 #include "node.hpp"
-
-#include <memory>
 
 class Layer
 {

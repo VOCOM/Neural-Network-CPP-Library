@@ -2,7 +2,7 @@
  * @file manager.hpp
  * @author Muhammad Syamim (Syazam33@gmail.com)
  * @brief 
- * @version 0.1
+ * @version 1.0
  * @date 2023-09-25
  * 
  * @copyright Copyright (c) 2023
@@ -15,7 +15,7 @@
 #include "node.hpp"
 #include "layers.hpp"
 
-#include <memory>
+#include <iostream>
 #include <thread>
 
 class NeuralNet

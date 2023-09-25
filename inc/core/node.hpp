@@ -2,7 +2,7 @@
  * @file node.hpp
  * @author Muhammad Syamim (Syazam33@gmail.com)
  * @brief 
- * @version 0.1
+ * @version 1.0
  * @date 2023-09-22
  * 
  * @copyright Copyright (c) 2023
