@@ -49,17 +49,28 @@ std::vector<double>& OutputVector()
 {
     return m_outputs;
 }
+size_t Width()
+{
+    return m_nodes.size();
+}
+void Info()
+{
+    std::cout << "Nodes: " << m_nodes.size() << "\n    ";
+    for(size_t index{}; index < m_nodes.size(); ++index)
+        m_nodes[index]->Info();
+        std::cout << "\n";
+}
 
 private:
 // Synapses
-std::vector<double>& m_inputs;
-std::vector<std::vector<double>>& m_weights;
-std::vector<double>& m_bias;
-std::shared_ptr<ActivationFunction>& m_activator;
-std::vector<double> m_outputs;
+std::vector<double>&                    m_inputs;
+std::vector<std::vector<double>>&       m_weights;
+std::vector<double>&                    m_bias;
+std::shared_ptr<ActivationFunction>&    m_activator;
+std::vector<double>                     m_outputs;
 
 // Nodes
-std::vector<std::unique_ptr<Node>> m_nodes;
+std::vector<std::unique_ptr<Node>>      m_nodes;
 
 };
 

@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
 
 /**
  * @brief Neural Node template class
@@ -28,7 +29,7 @@ class Node
 public:
 //Constructors & Destructors
 Node() = delete;
-Node(std::vector<double>& inputVector, std::vector<double>& outputVector, std::vector<double>& weightVector, double bias, std::shared_ptr<ActivationFunction> function)
+Node(const std::vector<double>& inputVector, std::vector<double>& outputVector, std::vector<double>& weightVector, double bias, std::shared_ptr<ActivationFunction> function)
     : m_inputs(inputVector), m_outputs(outputVector), m_weights(weightVector), m_bias(bias), m_activationFunction(function)
 {
     if(m_weights.size() != m_inputs.size()) throw MismatchError();
@@ -52,6 +53,12 @@ void UpdateWeights(double factor)
     for(auto& weight : m_weights)
         weight *= factor;
 }
+void Info()
+{
+    std::cout << "Weight ";
+    for(auto weight : m_weights)
+        std::cout << "[" << weight << "] ";
+}
 
 private:
 //Methods
@@ -71,13 +78,13 @@ void Stimulate()
 }
 
 //Variables
-double m_aggregate{};
+double                  m_aggregate{};
 
 //Synapses
 double m_bias{};
-std::vector<double>& m_inputs;
-std::vector<double>& m_outputs;
-std::vector<double>& m_weights;
+const std::vector<double>&  m_inputs;
+std::vector<double>&        m_outputs;
+std::vector<double>&        m_weights;
 
 //Activation Function
 std::shared_ptr<ActivationFunction> m_activationFunction;

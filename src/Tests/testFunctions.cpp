@@ -11,11 +11,20 @@
 
 #include "../../inc/tests.hpp"
 
-void Header(char const* string)
+#define LineWidth 80
+
+void Header(std::string string)
 {
-    std::cout << std::right << std::setfill('-') << std::setw(LineWidth) << " ";
+    size_t width = (LineWidth - string.size()) / 2;
+    std::cout << std::right << std::setfill('-') << std::setw(width) << " ";
     std::cout << string;
-    std::cout << std::left << std::setfill('-') << std::setw(LineWidth) << " " << "\n";
+    if(string.size() % 2) ++width;
+    std::cout << std::left << std::setfill('-') << std::setw(width) << " " << "\n";
+}
+
+void Header(const char* string)
+{
+    Header(std::string(string));
 }
 
 void Footer(char const* string)

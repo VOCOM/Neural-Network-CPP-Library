@@ -23,20 +23,20 @@ void NNLayerTests()
     NeuralNet& neuralNet = NeuralNet::Initialise(inputs, outputs);
     Header("Input Values");
     {
-        std::cout << "Weights:\n";
+        std::cout << "Weights:\n  ";
         for(size_t index{}; index < weights.size(); ++index)
         {
-            std::cout << " {";
+            std::cout << "{ ";
             for(size_t index2{}; index2 < weights[0].size(); ++index2)
-                std::cout << " [" << weights[index][index2] << "]";
-            std::cout << " }\n";
+                std::cout << "[" << weights[index][index2] << "] ";
+            std::cout << "}\n";
         }
-        std::cout << "Inputs:\n";
+        std::cout << "Inputs:\n  ";
         for(size_t index{}; index < inputs.size(); ++index)
-            std::cout << " [" << inputs[index] << "]";
-        std::cout << "\nOutputs:\n";
+            std::cout << "[" << inputs[index] << "] ";
+        std::cout << "\nOutputs:\n  ";
         for(size_t index{}; index < outputs.size(); ++index)
-            std::cout << " [" << outputs[index] << "]";
+            std::cout << "[" << outputs[index] << "] ";
         std::cout << "\n\n";
     }
 
@@ -48,25 +48,27 @@ void NNLayerTests()
         std::cout << "Sigmoid of " << aggregate << " with scaler of " << triggerFunction->Scaler() << " is " << triggerFunction->Run(aggregate + bias[0]) << "\n\n";
     }
 
-    Header("Single Layer Test");
+    Header("Single Layer Single Input Test");
     {
         neuralNet.AddLayer(weights, bias, triggerFunction);
         neuralNet.ForwardPass();
-        std::cout << "Outputs:\n";
-        for(size_t index{}; index < outputs.size(); ++index)
-            std::cout << " [" << outputs[index] << "]";
-        std::cout << "\n\n";
+        neuralNet.Info();
     }
 
-    Header("Double Layer Test");
+    Header("Double Layer Single Input Test");
     {
         neuralNet.AddLayer(weights, bias, triggerFunction);
-        neuralNet.Info();
         neuralNet.ForwardPass();
-        std::cout << "Outputs:\n";
-        for(size_t index{}; index < outputs.size(); ++index)
-            std::cout << " [" << outputs[index] << "]";
-        std::cout << "\n\n";
+        neuralNet.Info();
     }
+
+    Header("Remove Layer Test");
+    /* TODO */
+
+    Header("Single Layer Double Input Test");
+    /* TODO */
+
+    Header("Double Layer Double Input Test");
+    /* TODO */
 
 }

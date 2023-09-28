@@ -23,13 +23,13 @@ void NodeTest()
     std::shared_ptr<SigmoidActivator<SigmoidScaler>> triggerFunction = std::make_shared<SigmoidActivator<SigmoidScaler>>();
     Header("Input Values");
     {
-        std::cout << "Weights:";
+        std::cout << "Weights:\n  ";
         for(size_t index{}; index < weights.size(); ++index)
             std::cout << " [" << weights[index] << "]";
-        std::cout << "\nInputs: ";
+        std::cout << "\nInputs:\n  ";
         for(size_t index{}; index < inputs.size(); ++index)
             std::cout << " [" << inputs[index] << "]";
-        std::cout << "\nOutputs:";
+        std::cout << "\nOutputs:\n  ";
         for(size_t index{}; index < outputs.size(); ++index)
             std::cout << " [" << outputs[index] << "]";
         std::cout << "\n\n";

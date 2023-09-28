@@ -20,8 +20,6 @@
 #include "core/layers.hpp"
 #include "core/neuralNet.hpp"
 
-#define LineWidth 20
-
 // Formatting functions
 void Header(char const*);
 void Footer(char const*);
